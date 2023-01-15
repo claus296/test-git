@@ -1,19 +1,18 @@
 return {
     enter = function()
         stageImages = {
-            graphics.newImage(love.graphics.newImage(graphics.imagePath("week1/stage-back"))), -- stage-back
-		    graphics.newImage(love.graphics.newImage(graphics.imagePath("week1/stage-front"))), -- stage-front
-		    graphics.newImage(love.graphics.newImage(graphics.imagePath("week1/curtains"))) -- curtains
+		    graphics.newImage(love.graphics.newImage(graphics.imagePath("beast/beastBG")))
         }
 
-        stageImages[2].y = 400
-        stageImages[3].y = -100
+        enemy = Character.beast(0,0)
 
-        enemy = Character.daddydearest(0,0)
+        stageImages[1].sizeX, stageImages[1].sizeY = 0.7
 
-        girlfriend.x, girlfriend.y = -200, -445
-        enemy.x, enemy.y = -550, -500
-        boyfriend.x, boyfriend.y = 260, -125
+        stageImages[1].x = 100
+
+        enemy.x, enemy.y = -970, -800
+        
+		enemy.scale.x, enemy.scale.y = 0.8
     end,
 
     load = function()
@@ -28,27 +27,22 @@ return {
         love.graphics.push()
 			love.graphics.translate(cam.x * 0.9, cam.y * 0.9)
 
-			stageImages[1]:draw()
-			stageImages[2]:draw()
+            stageImages[1]:draw()
 
-			girlfriend:draw()
+            enemy:draw()
+
 		love.graphics.pop()
 		love.graphics.push()
 			love.graphics.translate(cam.x, cam.y)
 
-			enemy:draw()
-			boyfriend:draw()
 		love.graphics.pop()
 		love.graphics.push()
 			love.graphics.translate(cam.x * 1.1, cam.y * 1.1)
 
-			stageImages[3]:draw()
 		love.graphics.pop()
     end,
 
     leave = function()
-        stageImages[1] = nil
-        stageImages[2] = nil
-        stageImages[3] = nil
+
     end
 }

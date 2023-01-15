@@ -113,7 +113,7 @@ return {
 		love.graphics.pop()
 		
 		weeks:drawTimeLeftBar()
-		weeks:drawHealthBar()
+
 		if not paused then
 			weeks:drawUI()
 		end

@@ -210,6 +210,32 @@ function character.monster(x, y)
     return char
 end
 
+function character.beast(x, y)
+    curEnemy = "beast"
+    local char = sprite(x or 0, y or 0)
+    
+    char:setFrames(paths.getSparrowFrames("beast/beast"))
+    char:addAnimByPrefix("idle", "beast idle", 24, false)
+
+    char:addAnimByPrefix("left", "beast left", 24, false)
+    char:addAnimByPrefix("right", "beast right", 24, false)
+    char:addAnimByPrefix("up", "beast up", 24, false)
+    char:addAnimByPrefix("down", "beast down", 24, false)
+
+    char:addOffset("idle",  0, 0     )
+
+    char:addOffset("left",  0, 0  )
+    char:addOffset("right", 0, 0  )
+    char:addOffset("up",    0, 0  )
+    char:addOffset("down",  0, 0 )
+
+    char:animate("idle", false)
+
+    char.colours = {243,255,110}
+
+    return char
+end
+
 function character.pico(x, y)
     curEnemy = "pico"
     local char = sprite(x or 0, y or 0)
@@ -637,6 +663,7 @@ character.list = {
     {"Boyfriend", character.boyfriend},
     {"Girlfriend", character.girlfriend},
     {"Daddy Dearest", character.daddydearest},
+    {"beast", character.beast},
     {"Spooky Kids", character.spookykids},
     {"Monster", character.monster},
     {"Pico", character.pico},
